@@ -1,0 +1,39 @@
+pipeline {
+
+    options {
+        // Build auto timeout
+        timeout(time: 60, unit: 'MINUTES')
+    }
+
+    stage('Deploy to integration') {
+        steps {
+            script {
+
+                namespace = 'integration'
+                echo "Deploying application api-int.oursaas.org and static-int.oursaas.org to integration namespace"
+                sh "kubectl apply -f api-deployment.yml -f static-deployment.yml -f network-policy.yml  --namespace= ${namespace}"
+
+            }
+        }
+    }
+    stage('Deploy to sandbox') {
+        steps {
+            script {
+                namespace = 'sandbox'
+                echo "Deploying application api-sandbox.oursaas.org and static-sandbox.oursaas.org to sandbox namespace"
+                sh "kubectl apply -f api-deployment.yml -f static-deployment.yml -f network-policy.yml  --namespace= ${namespace}"
+
+            }
+        }
+    }
+    stage('Deploy to production') {
+        steps {
+            script {
+
+                namespace = 'production'
+                echo "Deploying application api.oursaas.org and static.oursaas.org to production namespace"
+                sh "kubectl apply -f api-deployment.yml -f static-deployment.yml -f network-policy.yml  --namespace= ${namespace}"
+            }
+        }
+    }
+}
