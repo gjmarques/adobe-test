@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "c0f17e11-dce3-4437-b106-43648b4a1702",
+		"name": "adobe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"book\" : \"80d9f5e3-e959-4365-b75f-7ca90e90057f\",\"quantity\" : 3},\n{\"book\" : \"e25ef467-7efc-40b4-9e6e-65a5c23be6d9\",\"quantity\" : 2},\n{\"book\" : \"55dd2a56-317d-437c-a46d-65f1e414edaf\",\"quantity\" : 1}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/placeorder/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placeorder",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
